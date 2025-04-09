@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zafira Agro - Kırda Başlar Sofrada Hayat Bulur</title>
+    <link rel="icon" type="image/png" href="zafira.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6c751d',
+                        secondary: '#f2e8d6'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #6c751d;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .hero-bg {
+            background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .product-card {
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            bottom: -5px;
+            left: 0;
+            background-color: #6c751d;
+            transform: translateX(50%);
+        }
+        .mobile-menu {
+            transform: translateY(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .mobile-menu.active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-secondary">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm shadow-md">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center">
+                    <img src="zafira.png" alt="Zafira Agro Logo" class="h-16 w-auto">
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-primary">Ana Sayfa</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-primary">Hakkımızda</a>
+                    <a href="#products" class="nav-link text-gray-700 hover:text-primary">Ürünlerimiz</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-primary">İletişim</a>
+                </div>
+                <!-- New Hamburger Menu Button -->
+                <button class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200" onclick="toggleMenu()" aria-label="Menu">
+                    <!-- Menu Icon (when closed) -->
+                    <svg class="w-6 h-6 text-primary menu-open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                    <!-- X Icon (when opened) -->
+                    <svg class="w-6 h-6 text-primary menu-close hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <!-- Mobile Menu -->
+            <div class="mobile-menu md:hidden absolute left-0 right-0 bg-white/95 backdrop-blur-sm shadow-lg">
+                <div class="flex flex-col space-y-4 px-4 py-6">
+                    <a href="#home" class="text-gray-700 hover:text-primary text-lg" onclick="toggleMenu()">Ana Sayfa</a>
+                    <a href="#about" class="text-gray-700 hover:text-primary text-lg" onclick="toggleMenu()">Hakkımızda</a>
+                    <a href="#products" class="text-gray-700 hover:text-primary text-lg" onclick="toggleMenu()">Ürünlerimiz</a>
+                    <a href="#contact" class="text-gray-700 hover:text-primary text-lg" onclick="toggleMenu()">İletişim</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center hero-bg">
+        <div class="absolute inset-0 bg-primary/80"></div>
+        <div class="relative z-10 text-center text-white px-4" data-aos="fade-up" data-aos-duration="1000">
+            <img src="zafira.png" alt="Zafira Agro Logo" class="w-72 md:w-[500px] mx-auto mb-8">
+            <p class="text-xl md:text-2xl italic mb-8">Kırda Başlar Sofrada Hayat Bulur</p>
+            <a href="#about" class="inline-block bg-white text-primary px-8 py-3 rounded-full font-semibold hover:bg-primary hover:text-white transition-all duration-300">
+                Keşfet
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-primary mb-8 text-center section-title" data-aos="fade-up">Hakkımızda</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300" data-aos="fade-right">
+                    <div class="text-4xl mb-4 text-primary">🌱</div>
+                    <h3 class="text-xl font-semibold text-primary mb-4">Tarım</h3>
+                    <p class="text-gray-700">Modern tarım teknikleri ile doğal ve sağlıklı ürünler yetiştiriyoruz. Toprağın bereketini en verimli şekilde değerlendiriyoruz.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300" data-aos="fade-left">
+                    <div class="text-4xl mb-4 text-primary">🐄</div>
+                    <h3 class="text-xl font-semibold text-primary mb-4">Hayvancılık</h3>
+                    <p class="text-gray-700">Hayvanlarımızı en iyi koşullarda yetiştiriyor, doğal beslenme ve modern tesislerimizle kaliteli ürünler sunuyoruz.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-20 px-4 bg-primary text-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-8 text-center section-title" data-aos="fade-up">Ürünlerimiz</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white/10 p-6 rounded-lg backdrop-blur-sm product-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="text-4xl mb-4">🥬</div>
+                    <h3 class="text-xl font-semibold mb-4">Organik Sebze ve Meyveler</h3>
+                    <p>Doğal yöntemlerle yetiştirilen, taze ve lezzetli ürünler.</p>
+                </div>
+                <div class="bg-white/10 p-6 rounded-lg backdrop-blur-sm product-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="text-4xl mb-4">🥛</div>
+                    <h3 class="text-xl font-semibold mb-4">Süt ve Süt Ürünleri</h3>
+                    <p>Sağlıklı hayvanlardan elde edilen, doğal süt ürünleri.</p>
+                </div>
+                <div class="bg-white/10 p-6 rounded-lg backdrop-blur-sm product-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="text-4xl mb-4">🥩</div>
+                    <h3 class="text-xl font-semibold mb-4">Büyükbaş Et Ürünleri</h3>
+                    <p>Kaliteli beslenme ve bakım ile elde edilen et ürünleri.</p>
+                </div>
+                <div class="bg-white/10 p-6 rounded-lg backdrop-blur-sm product-card" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="text-4xl mb-4">🐑</div>
+                    <h3 class="text-xl font-semibold mb-4">Küçükbaş Hayvan Ürünleri</h3>
+                    <p>Koyun ve keçi eti, süt ürünleri ve yün ürünleri.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-primary mb-8 text-center section-title" data-aos="fade-up">İletişim</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300" data-aos="fade-right">
+                    <h3 class="text-xl font-semibold text-primary mb-4">Bize Ulaşın</h3>
+                    <p class="text-gray-700 mb-4">Soru ve önerileriniz için bizimle iletişime geçebilirsiniz.</p>
+                    <div class="space-y-4">
+                        <p class="flex items-center text-gray-700 hover:text-primary transition-colors duration-300">
+                            <span class="mr-2 text-2xl">📞</span>
+                            <span>+90 XXX XXX XX XX</span>
+                        </p>
+                        <p class="flex items-center text-gray-700 hover:text-primary transition-colors duration-300">
+                            <span class="mr-2 text-2xl">📧</span>
+                            <span>info@zafiraagro.com</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300" data-aos="fade-left">
+                    <h3 class="text-xl font-semibold text-primary mb-4">Adres</h3>
+                    <p class="text-gray-700">Adres bilgileri buraya eklenecek</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-8">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p>&copy; 2024 Zafira Agro. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        function toggleMenu() {
+            const menuOpenIcon = document.querySelector('.menu-open');
+            const menuCloseIcon = document.querySelector('.menu-close');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            
+            menuOpenIcon.classList.toggle('hidden');
+            menuCloseIcon.classList.toggle('hidden');
+            mobileMenu.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const menuButton = document.querySelector('button[aria-label="Menu"]');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const menuOpenIcon = document.querySelector('.menu-open');
+            const menuCloseIcon = document.querySelector('.menu-close');
+            const isClickInside = menuButton.contains(event.target) || mobileMenu.contains(event.target);
+
+            if (!isClickInside && mobileMenu.classList.contains('active')) {
+                menuOpenIcon.classList.remove('hidden');
+                menuCloseIcon.classList.add('hidden');
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // Close mobile menu when window is resized to desktop view
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 768) {
+                const menuOpenIcon = document.querySelector('.menu-open');
+                const menuCloseIcon = document.querySelector('.menu-close');
+                const mobileMenu = document.querySelector('.mobile-menu');
+                
+                menuOpenIcon.classList.remove('hidden');
+                menuCloseIcon.classList.add('hidden');
+                mobileMenu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html> 
